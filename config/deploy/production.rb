@@ -60,8 +60,16 @@
 #     # password: "please use keys"
 #   }
 set :application, "blog"
-set :repo_url, "git@github.com:user/repo.git"
+set :repo_url, "https://github.com/neekin/blog-deploy.git"
 set :branch, :main
-set :deploy_to, "/var/www/#{fetch(:application)}"
+set :deploy_to, "/home/ubuntu/#{fetch(:application)}"
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets]
 append :linked_files, "config/database.yml"
+
+server "192.168.100.232",
+  user: "ubuntu",
+  roles: %w[app db web],
+  ssh_options: {
+    keys: %w[/home/user/.ssh/id_rsa],
+    forward_agent: true
+  }
