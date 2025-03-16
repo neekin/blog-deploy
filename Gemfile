@@ -55,6 +55,6 @@ group :development do
   gem "capistrano-rails"
   gem "capistrano-bundler"
   gem "capistrano-rbenv"
-  gem "capistrano-nginx"
-  gem "capistrano-puma"
+  gem "capistrano-passenger"
 end
+gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
